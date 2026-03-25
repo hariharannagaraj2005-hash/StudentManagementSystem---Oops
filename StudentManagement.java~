@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+package org.example;
+public class StudentManagement {
+
+    List<Student> students;
+    StudentManagement(){
+        students = new ArrayList<>();
+    }
+
+    public void addName(Student s){
+        students.add(s);
+    }
+
+    public void displayDetails(){
+        for(Student s : students){
+            System.out.println(s);
+        }
+    }
+
+    public Student searchStudent(int id){
+        for(Student s : students){
+            if(s.getId() ==  id){
+                return s;
+            }
+        }
+        return null;
+    }
+
+    public Student deleteStudent(int id){
+        for(int i=0;i<students.size();i++){
+            if(students.get(i).getId() == id){
+                Student store = students.get(i);
+                students.remove(i);
+                return store;
+            }
+        }return null;
+    }
+
+    public Student updateDetails(int id, String name, int age, String Department){
+        for(Student s : students){
+            if(s.getId() == id){
+                s.setName(name);
+                s.setAge(age);
+                s.setDepartment(Department);
+                return s;
+            }
+        }return null;
+    }
+}
